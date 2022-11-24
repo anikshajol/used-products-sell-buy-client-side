@@ -104,6 +104,18 @@ const Register = () => {
               />
             </div>
             <div>
+              <label htmlFor="image" className="block mb-2 text-sm">
+                Select Image:
+              </label>
+              <input
+                type="file"
+                id="image"
+                name="image"
+                accept="image/*"
+                required
+              />
+            </div>
+            <div>
               <label htmlFor="email" className="block mb-2 text-sm">
                 Email address
               </label>
