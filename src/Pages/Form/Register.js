@@ -1,40 +1,57 @@
 import React, { useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import swal from "sweetalert";
 import { AuthContext } from "../../Contexts/AuthProvider";
 
 const Register = () => {
-  const { createUser, updateName, verifyEmail, googleSignIn, gitSignIn } =
+  const { createUser, updateUserProfile, setLoading, googleSignIn, gitSignIn } =
     useContext(AuthContext);
 
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
   const handleSignUP = (e) => {
     e.preventDefault();
     const form = e.target;
     const name = form.name.value;
+    const image = form.image.files[0];
     const email = form.email.value;
     const password = form.password.value;
     console.log(name, email, password);
 
-    createUser(email, password)
-      .then((result) => {
-        const user = result.user;
+    const formData = new FormData();
+    formData.append("image", image);
 
-        console.log(user);
-        updateName(name)
-          .then(() => {
-            // Email verification sent!
-            verifyEmail().then(() => {
-              swal("verified your emails");
-              // ...
-            });
+    const url =
+      "https://api.imgbb.com/1/upload?&key=3bf3a1529072a19b51dab23636e71c93";
+
+    fetch(url, {
+      method: "POST",
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((imageData) => {
+        console.log(imageData.data.display_url);
+        createUser(email, password)
+          .then((result) => {
+            const user = result.user;
+            console.log(user);
+            updateUserProfile(name, imageData.data.display_url)
+              .then(() => {
+                toast.success("Please verify your email address");
+                navigate(from, { replace: true });
+              })
+
+              .catch((err) => console.log(err));
           })
-          .catch((error) => {
-            alert(error.message);
+          .catch((err) => {
+            console.error(err);
+            setLoading(false);
           });
       })
-      .catch((error) => console.log(error));
+      .catch((err) => console.log(err));
   };
 
   // googlesignIn

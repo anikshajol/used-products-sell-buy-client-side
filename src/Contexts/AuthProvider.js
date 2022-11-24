@@ -5,7 +5,6 @@ import {
   GithubAuthProvider,
   GoogleAuthProvider,
   onAuthStateChanged,
-  sendEmailVerification,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
@@ -27,18 +26,17 @@ const AuthProvider = ({ children }) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
-  const updateName = (name) => {
-    return updateProfile(auth.currentUser, { displayName: name });
+  const updateUserProfile = (name, photo) => {
+    setLoading(true);
+    return updateProfile(auth.currentUser, {
+      displayName: name,
+      photoURL: photo,
+    });
   };
 
   const signIn = (email, password) => {
     setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
-  };
-
-  const verifyEmail = () => {
-    setLoading(true);
-    return sendEmailVerification(auth.currentUser);
   };
 
   const googleSignIn = () => {
@@ -74,8 +72,7 @@ const AuthProvider = ({ children }) => {
     createUser,
     setUser,
     signIn,
-    updateName,
-    verifyEmail,
+    updateUserProfile,
     googleSignIn,
   };
   return (
