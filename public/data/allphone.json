@@ -1,0 +1,80 @@
+[
+  {
+    "_id": "637e73dd98ab43cc04e1933d",
+    "index": 0,
+    "category_id": 1,
+    "picture": "https://ibb.co/6B6Zp3R",
+    "sell_price": 15000,
+    "buying_price": 25000,
+    "used_duration": 1,
+    "name": "Android",
+    "model": "Galaxy F13",
+    "company": "Samsung",
+    "location": "Banani, Dhaka,Bangladesh"
+  },
+  {
+    "_id": "637e73dd80e7f20c6fd39fe9",
+    "index": 1,
+    "category_id": 1,
+    "picture": "https://ibb.co/MkMF2mT",
+    "sell_price": 28000,
+    "buying_price": 40000,
+    "used_duration": 2,
+    "name": "Android",
+    "model": "8",
+    "company": "OnePlus",
+    "location": "Azimpur, Dhaka, Bangladesh"
+  },
+  {
+    "_id": "637e73dd37e30b8645dede82",
+    "index": 2,
+    "category_id": 3,
+    "picture": "https://ibb.co/1fWfTt1",
+    "sell_price": 5000,
+    "buying_price": 9000,
+    "used_duration": 1,
+    "name": "Feature",
+    "model": "2780 Flip",
+    "company": "Nokia",
+    "location": "Mirpur 10, Dhaka, Bangladesh"
+  },
+  {
+    "_id": "637e73dd224ed53b25bff02c",
+    "index": 3,
+    "category_id": 3,
+    "picture": "https://ibb.co/DfHwfcx",
+    "sell_price": 3500,
+    "buying_price": 6000,
+    "used_duration": 3,
+    "name": "Nokia",
+    "model": "8210 4G",
+    "company": "KAGGLE",
+    "location": "Tangail-Sadar, Dhaka, Bangladesh"
+  },
+  {
+    "_id": "637e73dd5f44619277aae861",
+    "index": 4,
+    "category_id": 2,
+    "picture": "https://ibb.co/TwHVkW3",
+    "sell_price": 40000,
+    "buying_price": 90000,
+    "used_duration": 2,
+    "name": "IOS",
+    "model": "xs",
+    "company": "iPhone",
+    "location": "Sylhet"
+  },
+  {
+    "_id": "637e73dd195f600247d9f004",
+    "index": 5,
+    "category_id": 2,
+    "picture": "https://ibb.co/84LSRXS",
+    "sell_price": 20000,
+    "buying_price": 40000,
+    "used_duration": 3,
+    "name": "IOS",
+    "model": "7 Plus",
+    "company": "iPhone",
+    "location": "Dhanmondi, Dhaka, Bangladesh"
+  }
+]
