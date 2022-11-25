@@ -1,7 +1,8 @@
 import React, { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-
+import Lottie from "lottie-react";
+import lottie from "../../lottie/107385-login.json";
 import { AuthContext } from "../../Contexts/AuthProvider";
 
 const Login = () => {
@@ -34,7 +35,9 @@ const Login = () => {
         navigate(from, { replace: true });
         console.log(result.user);
       })
-      .catch((error) => toast.error(error.message));
+      .catch((error) => {
+        toast.error(error.message);
+      });
   };
 
   const handleGoogleSignIn = () => {
@@ -58,8 +61,8 @@ const Login = () => {
   };
 
   return (
-    <div className="flex justify-between items-center pt-8">
-      <div className="flex flex-col max-w-lg p-6 rounded-md sm:p-10 bg-teal-100 shadow-lg text-gray-900">
+    <div className="flex flex-wrap justify-evenly items-center pt-8">
+      <div className="flex flex-col max-w-lg p-6 rounded-md sm:p-10 md:bg-teal-100 shadow-lg text-gray-900">
         <div className="mb-8 text-center">
           <h1 className="my-3 text-4xl font-bold">Sign in</h1>
           <p className="text-sm text-gray-400">
@@ -188,7 +191,9 @@ const Login = () => {
         </p>
       </div>
       <div>
-        <section className="md:w-2/4"></section>
+        <section className="md:w-full">
+          <Lottie className="w-full" animationData={lottie} loop={true} />
+        </section>
       </div>
     </div>
   );

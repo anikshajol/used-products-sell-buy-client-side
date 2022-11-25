@@ -2,6 +2,8 @@ import React, { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import swal from "sweetalert";
+import Lottie from "lottie-react";
+import lottie from "../../lottie/38435-register.json";
 import { AuthContext } from "../../Contexts/AuthProvider";
 
 const Register = () => {
@@ -24,7 +26,7 @@ const Register = () => {
     const formData = new FormData();
     formData.append("image", image);
 
-    const url = `https://api.imgbb.com/1/upload?&key=3bf3a1529072a19b51dab23636e71c93`;
+    const url = `https://api.imgbb.com/1/upload?&key=${process.env.REACT_APP_IMAGE_BB_API}`;
 
     fetch(url, {
       method: "POST",
@@ -76,8 +78,8 @@ const Register = () => {
       });
   };
   return (
-    <div className="flex justify-center items-center pt-8">
-      <div className="flex flex-col max-w-5xl w-1/2 p-6 rounded-md sm:p-10 bg-teal-100 shadow-lg text-gray-900">
+    <div className="flex flex-wrap  md:flex-row justify-evenly h-[65vh] pt-12">
+      <div className="flex flex-col  md:w-1/3 p-6 rounded-md sm:p-10 md:bg-blue-500 shadow-lg text-gray-900">
         <div className="mb-8 text-center">
           <h1 className="my-3 text-4xl font-bold">Register</h1>
           <p className="text-sm text-gray-400">Create a new account</p>
@@ -170,10 +172,10 @@ const Register = () => {
           >
             <svg
               className="mr-2 -ml-1 w-4 h-4"
-              ariaHidden="true"
+              aria-hidden="true"
               focusable="false"
-              dataPrefix="fab"
-              dataIcon="google"
+              data-prefix="fab"
+              data-icon="google"
               role="img"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 488 512"
@@ -194,10 +196,10 @@ const Register = () => {
           >
             <svg
               className="mr-2 -ml-1 w-4 h-4"
-              ariaHidden="true"
+              aria-hidden="true"
               focusable="false"
-              dataPrefix="fab"
-              dataIcon="github"
+              data-Prefix="fab"
+              data-icon="github"
               role="img"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 496 512"
@@ -217,6 +219,15 @@ const Register = () => {
           </Link>
           .
         </p>
+      </div>
+      <div className="">
+        <section className="md:w-full ">
+          <Lottie
+            className="w-full h-[60vh]"
+            animationData={lottie}
+            loop={true}
+          />
+        </section>
       </div>
     </div>
   );

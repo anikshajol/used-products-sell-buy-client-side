@@ -3,8 +3,8 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo from "../../../Assets/logo.png";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
 
-import swal from "sweetalert";
 import { AuthContext } from "../../../Contexts/AuthProvider";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -14,7 +14,7 @@ const Navbar = () => {
   const handleLogout = () => {
     logOut()
       .then(() => {
-        swal("Logout successfully");
+        toast.success("Logout successfully");
         navigate("/login");
       })
       .catch((error) => {
@@ -23,16 +23,14 @@ const Navbar = () => {
   };
 
   return (
-    <div className="bg-[#2c3e50] text-white py-2 md:py-7 ">
+    <div className="bg-[#2c3e50] text-white py-2 md:py-4 ">
       <nav className="flex px-2 justify-between items-center ">
         <section className="text-2xl text-white ">
           <Link to="/" className="flex justify-evenly items-center">
             <div className="">
-              {" "}
               <img src={logo} className="w-12 h-12 rounded-full mr-3" alt="" />
             </div>
             <div className="ml-6">
-              {" "}
               <h2 className=" font-serif">SBSWAP</h2>
             </div>
           </Link>
@@ -89,7 +87,7 @@ const Navbar = () => {
                 {user?.photoURL ? (
                   <label
                     tabIndex={0}
-                    className="btn m-1 inline-block
+                    className="m-1 inline-block
                      cursor-pointer"
                   >
                     <img
