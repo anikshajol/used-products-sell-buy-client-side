@@ -24,8 +24,7 @@ const Register = () => {
     const formData = new FormData();
     formData.append("image", image);
 
-    const url =
-      "https://api.imgbb.com/1/upload?&key=3bf3a1529072a19b51dab23636e71c93";
+    const url = `https://api.imgbb.com/1/upload?&key=3bf3a1529072a19b51dab23636e71c93`;
 
     fetch(url, {
       method: "POST",

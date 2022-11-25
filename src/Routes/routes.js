@@ -1,4 +1,5 @@
 import Main from "../Layouts/Main";
+import Blog from "../Pages/Blog/Blog";
 import Login from "../Pages/Form/Login";
 import Register from "../Pages/Form/Register";
 import Home from "../Pages/Home/Home";
@@ -21,6 +22,10 @@ export const routes = createBrowserRouter([
       {
         path: "/register",
         element: <Register></Register>,
+      },
+      {
+        path: "/blog",
+        element: <Blog></Blog>,
       },
     ],
   },

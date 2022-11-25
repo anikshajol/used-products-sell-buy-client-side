@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-
+import logo from "../../../Assets/logo.png";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
 
 import swal from "sweetalert";
@@ -23,11 +23,18 @@ const Navbar = () => {
   };
 
   return (
-    <div className="bg-[#2c3e50] text-white py-2 md:py-0  ">
+    <div className="bg-[#2c3e50] text-white py-2 md:py-7 ">
       <nav className="flex px-2 justify-between items-center ">
         <section className="text-2xl text-white ">
-          <Link to="/">
-            <h2 className="font-bold font-serif">NextCoder</h2>
+          <Link to="/" className="flex justify-evenly items-center">
+            <div className="">
+              {" "}
+              <img src={logo} className="w-12 h-12 rounded-full mr-3" alt="" />
+            </div>
+            <div className="ml-6">
+              {" "}
+              <h2 className=" font-serif">SBSWAP</h2>
+            </div>
           </Link>
         </section>
         <section

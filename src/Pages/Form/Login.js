@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
+import toast from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
-import swal from "sweetalert";
+
 import { AuthContext } from "../../Contexts/AuthProvider";
 
 const Login = () => {
@@ -15,10 +15,10 @@ const Login = () => {
   const handleReset = () => {
     resetPassword(userEmail)
       .then(() => {
-        swal(" reset link has been sents into you email ");
+        toast.success(" reset link has been sents into you email ");
       })
       .catch((error) => {
-        swal(error.message);
+        toast.success(error.message);
       });
   };
 
@@ -30,20 +30,11 @@ const Login = () => {
     console.log(email, password);
     signIn(email, password)
       .then((result) => {
-        toast.success("🦄 Wow so easy!", {
-          position: "top-center",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-        });
+        toast.success("login success");
         navigate(from, { replace: true });
         console.log(result.user);
       })
-      .catch((error) => swal(error.message));
+      .catch((error) => toast.error(error.message));
   };
 
   const handleGoogleSignIn = () => {
@@ -58,7 +49,7 @@ const Login = () => {
   const handleGitHubSignIn = () => {
     gitSignIn()
       .then(() => {
-        swal("You are Successfully Login with GitHub Account");
+        toast.success("You are Successfully Login with GitHub Account");
         navigate("/");
       })
       .catch((error) => {
