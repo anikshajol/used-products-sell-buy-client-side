@@ -1,3 +1,4 @@
+import Products from "../Components/Products/Products";
 import Main from "../Layouts/Main";
 import Blog from "../Pages/Blog/Blog";
 import Login from "../Pages/Form/Login";
@@ -28,6 +29,12 @@ export const routes = createBrowserRouter([
       {
         path: "/blog",
         element: <Blog></Blog>,
+      },
+      {
+        path: "/category/:id",
+        element: <Products></Products>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/category/${params.id}`),
       },
     ],
   },
