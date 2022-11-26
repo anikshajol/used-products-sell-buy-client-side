@@ -2,10 +2,10 @@ import moment from "moment/moment";
 import React, { useContext } from "react";
 import { AuthContext } from "../../Contexts/AuthProvider";
 
-const ProductsCard = ({ product }) => {
+const ProductsCard = ({ product, setProduct }) => {
   const { user } = useContext(AuthContext);
   console.log(user);
-  let date = moment().format("MM-DD-YYYY hh:mm:ss");
+  let date = moment().format("MM-DD-YYYY");
 
   console.log(product);
   return (
@@ -25,12 +25,18 @@ const ProductsCard = ({ product }) => {
             {product?.model}{" "}
           </p>
           <p>Location:{product.location} </p>
-          <section>
-            <p></p>
+          <section className="flex justify-around">
+            <p> {user.displayName}</p>
             <p> {date} </p>
           </section>
           <div className="card-actions justify-end">
-            <button className="btn btn-primary">Book Now</button>
+            <label
+              htmlFor="booking-modal"
+              className="btn btn-primary text-white"
+              onClick={() => setProduct(product)}
+            >
+              Book Now
+            </label>
           </div>
         </div>
       </div>
