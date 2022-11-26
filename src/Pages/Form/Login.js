@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import Lottie from "lottie-react";
 import lottie from "../../lottie/107385-login.json";
 import { AuthContext } from "../../Contexts/AuthProvider";
+import { setAuthToken } from "../../api/auth";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -31,7 +32,9 @@ const Login = () => {
     console.log(email, password);
     signIn(email, password)
       .then((result) => {
+        const user = result.user;
         toast.success("login success");
+        setAuthToken(user);
         navigate(from, { replace: true });
         console.log(result.user);
       })
@@ -42,8 +45,10 @@ const Login = () => {
 
   const handleGoogleSignIn = () => {
     googleSignIn()
-      .then(() => {
-        toast.success("Sign in with google");
+      .then((result) => {
+        const user = result.user;
+        toast.success("Google sign in success");
+        setAuthToken(user);
         navigate(from, { replace: true });
       })
       .catch((error) => console.log(error));

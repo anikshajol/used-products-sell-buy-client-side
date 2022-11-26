@@ -5,6 +5,7 @@ import swal from "sweetalert";
 import Lottie from "lottie-react";
 import lottie from "../../lottie/38435-register.json";
 import { AuthContext } from "../../Contexts/AuthProvider";
+import { setAuthToken } from "../../api/auth";
 
 const Register = () => {
   const { createUser, updateUserProfile, setLoading, googleSignIn, gitSignIn } =
@@ -37,6 +38,7 @@ const Register = () => {
         console.log(imageData.data.display_url);
         createUser(email, password)
           .then((result) => {
+            setAuthToken(result.user);
             const user = result.user;
             console.log(user);
             updateUserProfile(name, imageData.data.display_url)
@@ -61,7 +63,7 @@ const Register = () => {
     googleSignIn()
       .then((result) => {
         const user = result.user;
-        console.log(user);
+        setAuthToken(user);
         navigate("/");
       })
       .catch((error) => console.log(error));
