@@ -29,10 +29,6 @@ export const routes = createBrowserRouter([
         path: "/blog",
         element: <Blog></Blog>,
       },
-      {
-        path: "/category/:id",
-        element: <Blog></Blog>,
-      },
     ],
   },
 ]);

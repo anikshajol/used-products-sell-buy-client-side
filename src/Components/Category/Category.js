@@ -7,8 +7,9 @@ const Category = () => {
 
   useEffect(() => {
     const fetchProducts = async () => {
-      const { data } = await axios.get(`${process.env.REACT_APP_URL}/category`);
+      const { data } = await axios.get(`${process.env.REACT_APP_URL}/products`);
       setCategory(data);
+      console.log(data);
     };
     fetchProducts();
   }, []);
@@ -16,7 +17,7 @@ const Category = () => {
     <div>
       <h2>Category</h2>
 
-      <section className="grid grid-cols-3">
+      <section className="grid grid-cols-3 gap-8">
         {category.map((product) => (
           <DisplayCategory
             key={product._id}
