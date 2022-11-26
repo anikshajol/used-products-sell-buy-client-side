@@ -23,7 +23,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="bg-[#2c3e50] text-white py-2 md:py-4 ">
+    <div className="bg-[#ff9900] text-white py-2 md:py-4 ">
       <nav className="flex px-2 justify-between items-center ">
         <section className="text-2xl text-white ">
           <Link to="/" className="flex justify-evenly items-center">
@@ -36,7 +36,7 @@ const Navbar = () => {
           </Link>
         </section>
         <section
-          className={` nav text-2xl  justify-end text-white flex flex-col-reverse md:flex-row md:items-center md:text-black  gap-x-6 p-2 w-full text-center bg-[#2c3e50] md:text-right md:static absolute right-[1px] md:right-0  top-16 duration-1000 ease-in-out ${
+          className={` nav text-2xl  justify-end text-white flex flex-col-reverse md:flex-row md:items-center md:text-black  gap-x-6 p-2 w-full text-center bg-[#ff9900] md:text-right md:static absolute right-[1px] md:right-0  top-16 duration-1000 ease-in-out ${
             open ? "top-12 " : "top-[-520px]"
           }`}
         >

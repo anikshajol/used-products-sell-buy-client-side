@@ -1,6 +1,5 @@
 [
   {
-    "_id": "637e73dd98ab43cc04e1933d",
     "index": 0,
     "category_id": 1,
     "picture": "https://ibb.co/6B6Zp3R",
@@ -13,7 +12,6 @@
     "location": "Banani, Dhaka,Bangladesh"
   },
   {
-    "_id": "637e73dd80e7f20c6fd39fe9",
     "index": 1,
     "category_id": 1,
     "picture": "https://ibb.co/MkMF2mT",
@@ -26,7 +24,6 @@
     "location": "Azimpur, Dhaka, Bangladesh"
   },
   {
-    "_id": "637e73dd37e30b8645dede82",
     "index": 2,
     "category_id": 3,
     "picture": "https://ibb.co/1fWfTt1",
@@ -39,7 +36,6 @@
     "location": "Mirpur 10, Dhaka, Bangladesh"
   },
   {
-    "_id": "637e73dd224ed53b25bff02c",
     "index": 3,
     "category_id": 3,
     "picture": "https://ibb.co/DfHwfcx",
@@ -52,7 +48,6 @@
     "location": "Tangail-Sadar, Dhaka, Bangladesh"
   },
   {
-    "_id": "637e73dd5f44619277aae861",
     "index": 4,
     "category_id": 2,
     "picture": "https://ibb.co/TwHVkW3",
@@ -65,7 +60,6 @@
     "location": "Sylhet"
   },
   {
-    "_id": "637e73dd195f600247d9f004",
     "index": 5,
     "category_id": 2,
     "picture": "https://ibb.co/84LSRXS",

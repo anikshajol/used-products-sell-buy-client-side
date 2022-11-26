@@ -1,14 +1,17 @@
 [
   {
-    "id": "01",
+    "category_id": "01",
+    "picture": "https://ibb.co/MkMF2mT",
     "name": "Android"
   },
   {
-    "id": "02",
+    "category_id": "02",
+    "picture": "https://ibb.co/TwHVkW3",
     "name": "IOS"
   },
   {
-    "id": "03",
+    "category_id": "03",
+    "picture": "https://ibb.co/1fWfTt1",
     "name": "Featured"
   }
 ]
