@@ -1,5 +1,6 @@
 import moment from "moment";
 import React, { useContext } from "react";
+import { toast } from "react-toastify";
 
 import { AuthContext } from "../../Contexts/AuthProvider";
 
@@ -11,7 +12,6 @@ const BookingModal = ({ product, setProduct }) => {
   const handleBooking = (e) => {
     e.preventDefault();
     const form = e.target;
-
     const name = form.name.value;
     const email = form.email.value;
     const phone = form.phone.value;
@@ -21,36 +21,32 @@ const BookingModal = ({ product, setProduct }) => {
     const booking = {
       bookingDate: date,
       product: company,
-      buyer: name,
+      name,
       location,
       email,
       phone,
       price,
     };
 
-    // TODO: send data to the server
-    // and once data is saved then close the modal
-    // and display success toast
     console.log(booking);
-    setProduct(null);
-    //   fetch("https://doctors-portal-server-rust.vercel.app/bookings", {
-    //     method: "POST",
-    //     headers: {
-    //       "content-type": "application/json",
-    //     },
-    //     body: JSON.stringify(booking),
-    //   })
-    //     .then((res) => res.json())
-    //     .then((data) => {
-    //       console.log(data);
-    //       if (data.acknowledged) {
-    //         setTreatment(null);
-    //         toast.success("Booking confirmed");
-    //         refetch();
-    //       } else {
-    //         toast.error(data.message);
-    //       }
-    //     });
+    fetch(`${process.env.REACT_APP_URL}/bookings`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(booking),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.acknowledged) {
+          setProduct(null);
+          toast.success("Your Booking has been confirmed");
+          // refetch();
+        } else {
+          toast.error(data.message);
+        }
+      });
   };
 
   return (
@@ -69,7 +65,7 @@ const BookingModal = ({ product, setProduct }) => {
           </h3>
 
           <form
-            onClick={handleBooking}
+            onSubmit={handleBooking}
             className="grid grid-cols-1 gap-3 mt-10"
           >
             <input

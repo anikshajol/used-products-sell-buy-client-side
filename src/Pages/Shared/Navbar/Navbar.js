@@ -23,7 +23,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="bg-[#ff9900] text-white py-2 md:py-4 ">
+    <div className="bg-[#ff9900] text-white py-2 md:py-4 z-300">
       <nav className="flex px-2 justify-between items-center ">
         <section className="text-2xl text-white ">
           <Link to="/" className="flex justify-evenly items-center">
@@ -40,17 +40,6 @@ const Navbar = () => {
             open ? "top-12 " : "top-[-520px]"
           }`}
         >
-          {/* <NavLink
-            className={({ isActive }) =>
-              isActive
-                ? "md:active bg-blue-800 text-white font-semibold rounded-md p-1"
-                : "hover:text-neutral-400 text-white hover:font-semibold hover:text-2xl"
-            }
-            to="/products"
-          >
-            Products
-          </NavLink> */}
-
           <NavLink
             className={({ isActive }) =>
               isActive
@@ -61,16 +50,6 @@ const Navbar = () => {
           >
             Blog
           </NavLink>
-          {/* <NavLink
-            className={({ isActive }) =>
-              isActive
-                ? "md:active bg-blue-800 text-white font-semibold rounded-md p-1"
-                : "hover:text-neutral-400 text-white hover:font-semibold hover:text-2xl"
-            }
-            to="/faq"
-          >
-            FAQ
-          </NavLink> */}
 
           {user && user?.uid ? (
             <>
@@ -79,6 +58,12 @@ const Navbar = () => {
                 className="hover:text-neutral-400 text-white hover:font-semibold hover:text-2xl"
               >
                 Logout
+              </NavLink>
+              <NavLink
+                to="/dashboard"
+                className="hover:text-neutral-400 text-white hover:font-semibold hover:text-2xl"
+              >
+                Dashboard
               </NavLink>
               <NavLink className=" text-neutral-400">
                 {user.displayName}
@@ -143,6 +128,27 @@ const Navbar = () => {
           {open ? <XMarkIcon /> : <Bars3Icon />}
         </div>
       </nav>
+      {/* drawer option open click in mobile device */}
+      <label
+        htmlFor="dashboard-drawer"
+        tabIndex={2}
+        className="btn btn-ghost lg:hidden"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-5 w-5"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            d="M4 6h16M4 12h8m-8 6h16"
+          />
+        </svg>
+      </label>
     </div>
   );
 };

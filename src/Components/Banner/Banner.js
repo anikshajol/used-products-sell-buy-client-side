@@ -4,8 +4,8 @@ import lottie from "../../lottie/77169-buy-and-sell-online.json";
 
 const Banner = () => {
   return (
-    <div className="flex items-center flex-col justify-center md:flex-row container mx-auto ">
-      <section className="md:w-full ">
+    <div className="flex items-center flex-col justify-center md:flex-row container mx-auto">
+      <section className="md:w-full mt-32 md:mt-12 ">
         <Lottie
           className="w-full h-[60vh]"
           animationData={lottie}

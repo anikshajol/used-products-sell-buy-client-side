@@ -5,10 +5,11 @@ import ProductsCard from "./ProductsCard";
 
 const Products = () => {
   const products = useLoaderData();
+  console.log(products);
   const [product, setProduct] = useState(null);
   console.log(products);
   return (
-    <section>
+    <section className="my-12">
       <div className="flex flex-wrap justify-center gap-6">
         {products.map((product) => (
           <ProductsCard

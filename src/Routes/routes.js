@@ -1,6 +1,8 @@
 import Products from "../Components/Products/Products";
+import DashboardLayout from "../Layouts/DashboardLayout";
 import Main from "../Layouts/Main";
 import Blog from "../Pages/Blog/Blog";
+import Dashboard from "../Pages/Dashboard/Dashboard";
 import Login from "../Pages/Form/Login";
 import Register from "../Pages/Form/Register";
 import Home from "../Pages/Home/Home";
@@ -40,6 +42,20 @@ export const routes = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/category/${params.id}`),
+      },
+    ],
+  },
+  {
+    path: "/dashboard",
+    element: (
+      <PrivateRoute>
+        <DashboardLayout></DashboardLayout>
+      </PrivateRoute>
+    ),
+    children: [
+      {
+        path: "/dashboard",
+        element: <Dashboard></Dashboard>,
       },
     ],
   },
