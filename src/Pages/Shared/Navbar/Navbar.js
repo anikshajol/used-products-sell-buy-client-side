@@ -40,16 +40,16 @@ const Navbar = () => {
             open ? "top-12 " : "top-[-520px]"
           }`}
         >
-          <NavLink
+          {/* <NavLink
             className={({ isActive }) =>
               isActive
                 ? "md:active bg-blue-800 text-white font-semibold rounded-md p-1"
                 : "hover:text-neutral-400 text-white hover:font-semibold hover:text-2xl"
             }
-            to="/courses"
+            to="/products"
           >
-            Courses
-          </NavLink>
+            Products
+          </NavLink> */}
 
           <NavLink
             className={({ isActive }) =>
@@ -61,7 +61,7 @@ const Navbar = () => {
           >
             Blog
           </NavLink>
-          <NavLink
+          {/* <NavLink
             className={({ isActive }) =>
               isActive
                 ? "md:active bg-blue-800 text-white font-semibold rounded-md p-1"
@@ -70,7 +70,7 @@ const Navbar = () => {
             to="/faq"
           >
             FAQ
-          </NavLink>
+          </NavLink> */}
 
           {user && user?.uid ? (
             <>
