@@ -4,6 +4,7 @@ import Main from "../Layouts/Main";
 import Blog from "../Pages/Blog/Blog";
 import AllUsers from "../Pages/Dashboard/AllUsers";
 import MyOrder from "../Pages/Dashboard/MyOrder";
+import Payment from "../Pages/Dashboard/Payment";
 import Login from "../Pages/Form/Login";
 import Register from "../Pages/Form/Register";
 import Home from "../Pages/Home/Home";
@@ -66,6 +67,13 @@ export const routes = createBrowserRouter([
             <AllUsers></AllUsers>
           </AdminRoute>
         ),
+      },
+
+      {
+        path: "/dashboard/payment/:id",
+        element: <Payment></Payment>,
+        loader: ({ params }) =>
+          fetch(`${process.env.REACT_APP_URL}/bookings/${params.id}`),
       },
     ],
   },
