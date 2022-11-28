@@ -54,10 +54,10 @@ const Navbar = () => {
           {user && user?.uid ? (
             <>
               <NavLink
-                onClick={handleLogout}
+                to="/"
                 className="hover:text-neutral-400 text-white hover:font-semibold hover:text-2xl"
               >
-                Logout
+                Home
               </NavLink>
               <NavLink
                 to="/dashboard"
@@ -65,6 +65,13 @@ const Navbar = () => {
               >
                 Dashboard
               </NavLink>
+              <NavLink
+                onClick={handleLogout}
+                className="hover:text-neutral-400 text-white hover:font-semibold hover:text-2xl"
+              >
+                Logout
+              </NavLink>
+
               <NavLink className=" text-neutral-400">
                 {user.displayName}
               </NavLink>
@@ -129,11 +136,7 @@ const Navbar = () => {
         </div>
       </nav>
       {/* drawer option open click in mobile device */}
-      <label
-        htmlFor="dashboard-drawer"
-        tabIndex={2}
-        className="btn btn-ghost lg:hidden"
-      >
+      <label htmlFor="dashboard-drawer" tabIndex={2} className="p-5 lg:hidden">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-5 w-5"

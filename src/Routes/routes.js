@@ -2,7 +2,7 @@ import Products from "../Components/Products/Products";
 import DashboardLayout from "../Layouts/DashboardLayout";
 import Main from "../Layouts/Main";
 import Blog from "../Pages/Blog/Blog";
-import Dashboard from "../Pages/Dashboard/Dashboard";
+import MyOrder from "../Pages/Dashboard/MyOrder";
 import Login from "../Pages/Form/Login";
 import Register from "../Pages/Form/Register";
 import Home from "../Pages/Home/Home";
@@ -54,8 +54,8 @@ export const routes = createBrowserRouter([
     ),
     children: [
       {
-        path: "/dashboard",
-        element: <Dashboard></Dashboard>,
+        path: "/dashboard/my-order",
+        element: <MyOrder></MyOrder>,
       },
     ],
   },

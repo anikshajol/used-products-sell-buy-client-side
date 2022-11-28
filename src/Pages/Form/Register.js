@@ -42,7 +42,8 @@ const Register = () => {
             const user = result.user;
             console.log(user);
             updateUserProfile(name, imageData.data.display_url)
-              .then(() => {
+              .then((result) => {
+                setAuthToken(result.user);
                 toast.success("Please verify your email address");
                 navigate(from, { replace: true });
               })

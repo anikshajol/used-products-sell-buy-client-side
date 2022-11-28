@@ -1,11 +1,12 @@
 export const setAuthToken = (user) => {
   const currentUser = {
     email: user.email,
+    name: user.displayName,
   };
 
   // save user in mongodb and get token
 
-  fetch(`${process.env.REACT_APP_URL}/user/${user?.email}`, {
+  fetch(`${process.env.REACT_APP_URL}/user`, {
     method: "PUT",
     headers: {
       "content-type": "application/json",
