@@ -2,11 +2,13 @@ import Products from "../Components/Products/Products";
 import DashboardLayout from "../Layouts/DashboardLayout";
 import Main from "../Layouts/Main";
 import Blog from "../Pages/Blog/Blog";
+import AllUsers from "../Pages/Dashboard/AllUsers";
 import MyOrder from "../Pages/Dashboard/MyOrder";
 import Login from "../Pages/Form/Login";
 import Register from "../Pages/Form/Register";
 import Home from "../Pages/Home/Home";
 import ErrorPage from "../Pages/Shared/ErrorPage/ErrorPage";
+import AdminRoute from "./AdminRoute";
 import PrivateRoute from "./PrivateRoute";
 
 const { createBrowserRouter } = require("react-router-dom");
@@ -56,6 +58,14 @@ export const routes = createBrowserRouter([
       {
         path: "/dashboard/my-order",
         element: <MyOrder></MyOrder>,
+      },
+      {
+        path: "/dashboard/allusers",
+        element: (
+          <AdminRoute>
+            <AllUsers></AllUsers>
+          </AdminRoute>
+        ),
       },
     ],
   },
