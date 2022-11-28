@@ -4,15 +4,21 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import Lottie from "lottie-react";
 import lottie from "../../lottie/107385-login.json";
 import { AuthContext } from "../../Contexts/AuthProvider";
-import { setAuthToken } from "../../api/Auth";
+import useToken from "../../Hooks/useToken";
 
 const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [userEmail, setUserEmail] = useState("");
+  const [loginUserEmail, setLoginUserEmail] = useState("");
+  const [token] = useToken(loginUserEmail);
   const from = location.state?.from?.pathname || "/";
   const { signIn, resetPassword, googleSignIn, gitSignIn } =
     useContext(AuthContext);
+
+  if (token) {
+    navigate(from, { replace: true });
+  }
 
   const handleReset = () => {
     resetPassword(userEmail)
@@ -34,8 +40,8 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         toast.success("login success");
-        setAuthToken(user);
-        navigate(from, { replace: true });
+        console.log(user);
+        setLoginUserEmail(email);
         console.log(result.user);
       })
       .catch((error) => {
@@ -48,7 +54,8 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         toast.success("Google sign in success");
-        setAuthToken(user);
+        console.log(user);
+
         navigate(from, { replace: true });
       })
       .catch((error) => console.log(error));

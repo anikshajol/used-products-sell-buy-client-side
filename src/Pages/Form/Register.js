@@ -1,22 +1,26 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import swal from "sweetalert";
 import Lottie from "lottie-react";
 import lottie from "../../lottie/38435-register.json";
 import { AuthContext } from "../../Contexts/AuthProvider";
-import { setAuthToken } from "../../api/Auth";
-import { data } from "autoprefixer";
+import useToken from "../../Hooks/useToken";
 
 const Register = () => {
   const { createUser, updateUserProfile, setLoading, googleSignIn, gitSignIn } =
     useContext(AuthContext);
-
+  const [createdUserEmail, setCreatedUserEmail] = useState("");
+  const [token] = useToken(createdUserEmail);
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
 
-  const handleSignUP = (e) => {
+  if (token) {
+    navigate("/");
+  }
+
+  const handleRegister = (e) => {
     e.preventDefault();
     const form = e.target;
     const name = form.name.value;
@@ -39,12 +43,12 @@ const Register = () => {
         console.log(imageData.data.display_url);
         createUser(email, password)
           .then((result) => {
-            setAuthToken(result.user);
             const user = result.user;
             console.log(user);
             updateUserProfile(name, imageData.data.display_url)
               .then(() => {
-                saveUser(email, name);
+                saveUser(name, email);
+                toast.success("Account created successfully");
                 navigate(from, { replace: true });
               })
 
@@ -58,30 +62,13 @@ const Register = () => {
       .catch((err) => console.log(err));
   };
 
-  const saveUser = (name, email) => {
-    const user = { name, email };
-    fetch(`${process.env.REACT_APP_URL}/users`, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(user),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        // setCreatedUserEmail(email);
-        navigate("/");
-        console.log(data);
-      });
-  };
-
   // googlesignIn
 
   const handleGoogleSignIn = () => {
     googleSignIn()
       .then((result) => {
         const user = result.user;
-        setAuthToken(user);
+        console.log(user);
         navigate("/");
       })
       .catch((error) => console.log(error));
@@ -97,6 +84,23 @@ const Register = () => {
         console.error(error);
       });
   };
+
+  const saveUser = (name, email) => {
+    const user = { name, email };
+    fetch(`${process.env.REACT_APP_URL}/users`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setCreatedUserEmail(email);
+        console.log(data);
+      });
+  };
+
   return (
     <div className="flex flex-wrap  md:flex-row justify-evenly h-[65vh] pt-12">
       <div className="flex flex-col  md:w-1/3 p-6 rounded-md sm:p-10 md:bg-blue-500 shadow-lg text-gray-900">
@@ -105,7 +109,7 @@ const Register = () => {
           <p className="text-sm text-gray-400">Create a new account</p>
         </div>
         <form
-          onSubmit={handleSignUP}
+          onSubmit={handleRegister}
           noValidate=""
           action=""
           className="space-y-12 ng-untouched ng-pristine ng-valid"

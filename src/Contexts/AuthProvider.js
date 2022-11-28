@@ -51,7 +51,7 @@ const AuthProvider = ({ children }) => {
 
   const logOut = () => {
     setLoading(true);
-    localStorage.removeItem("sbswap-token");
+    // localStorage.removeItem("accessToken");
     return signOut(auth);
   };
 
