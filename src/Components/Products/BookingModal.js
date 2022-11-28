@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import { AuthContext } from "../../Contexts/AuthProvider";
 
 const BookingModal = ({ product, setProduct }) => {
-  const { company, model, sell_price } = product;
+  const { company, model, sell_price, picture } = product;
   let date = moment().format("MM-DD-YY");
   const { user } = useContext(AuthContext);
 
@@ -21,6 +21,8 @@ const BookingModal = ({ product, setProduct }) => {
     const booking = {
       bookingDate: date,
       product: company,
+      model,
+      picture,
       name,
       location,
       email,
@@ -60,9 +62,15 @@ const BookingModal = ({ product, setProduct }) => {
           >
             ✕
           </label>
-          <h3 className="text-lg font-bold">
-            {company} <span className="text-orange-400">{model}</span>
-          </h3>
+          <div className="flex justify-around">
+            <h3 className="text-lg font-bold">
+              {company} <span className="text-orange-400">{model}</span>
+            </h3>
+            <span className="text-lg font-bold">
+              <img src={picture} alt="" />
+            </span>
+          </div>
+          <div></div>
 
           <form
             onSubmit={handleBooking}

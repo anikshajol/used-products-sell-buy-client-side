@@ -5,7 +5,8 @@ import swal from "sweetalert";
 import Lottie from "lottie-react";
 import lottie from "../../lottie/38435-register.json";
 import { AuthContext } from "../../Contexts/AuthProvider";
-import { setAuthToken } from "../../api/auth";
+import { setAuthToken } from "../../api/Auth";
+import { data } from "autoprefixer";
 
 const Register = () => {
   const { createUser, updateUserProfile, setLoading, googleSignIn, gitSignIn } =
@@ -42,9 +43,8 @@ const Register = () => {
             const user = result.user;
             console.log(user);
             updateUserProfile(name, imageData.data.display_url)
-              .then((result) => {
-                setAuthToken(result.user);
-                toast.success("Please verify your email address");
+              .then(() => {
+                saveUser(email, name);
                 navigate(from, { replace: true });
               })
 
@@ -56,6 +56,23 @@ const Register = () => {
           });
       })
       .catch((err) => console.log(err));
+  };
+
+  const saveUser = (name, email) => {
+    const user = { name, email };
+    fetch(`${process.env.REACT_APP_URL}/users`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        // setCreatedUserEmail(email);
+        navigate("/");
+        console.log(data);
+      });
   };
 
   // googlesignIn

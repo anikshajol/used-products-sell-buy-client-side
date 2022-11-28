@@ -13,6 +13,7 @@ const MyOrder = () => {
     queryFn: async () => {
       const res = await fetch(url);
       const data = await res.json();
+      console.log(data);
       return data;
     },
   });
@@ -29,7 +30,7 @@ const MyOrder = () => {
               <th>Product</th>
               <th>Date</th>
               <th>Price</th>
-              <th>Time</th>
+              <th>Location</th>
               <th>Payment</th>
             </tr>
           </thead>
@@ -38,6 +39,13 @@ const MyOrder = () => {
               bookings?.map((booking, i) => (
                 <tr key={booking._id}>
                   <th>{i + 1}</th>
+                  <td>
+                    <img
+                      src={booking?.picture}
+                      className="w-24 rounded-full h-24"
+                      alt=""
+                    />
+                  </td>
                   <td>{booking.name}</td>
                   <td>{booking.product}</td>
                   <td>{booking.bookingDate}</td>

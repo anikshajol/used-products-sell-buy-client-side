@@ -4,7 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import Lottie from "lottie-react";
 import lottie from "../../lottie/107385-login.json";
 import { AuthContext } from "../../Contexts/AuthProvider";
-import { setAuthToken } from "../../api/auth";
+import { setAuthToken } from "../../api/Auth";
 
 const Login = () => {
   const navigate = useNavigate();
