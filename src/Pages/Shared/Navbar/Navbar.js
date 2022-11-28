@@ -46,6 +46,16 @@ const Navbar = () => {
                 ? "md:active bg-blue-800 text-white font-semibold rounded-md p-1"
                 : "hover:text-neutral-400 text-white hover:font-semibold hover:text-2xl"
             }
+            to="/"
+          >
+            Home
+          </NavLink>
+          <NavLink
+            className={({ isActive }) =>
+              isActive
+                ? "md:active bg-blue-800 text-white font-semibold rounded-md p-1"
+                : "hover:text-neutral-400 text-white hover:font-semibold hover:text-2xl"
+            }
             to="/blog"
           >
             Blog
@@ -53,12 +63,6 @@ const Navbar = () => {
 
           {user && user?.uid ? (
             <>
-              <NavLink
-                to="/"
-                className="hover:text-neutral-400 text-white hover:font-semibold hover:text-2xl"
-              >
-                Home
-              </NavLink>
               <NavLink
                 to="/dashboard"
                 className="hover:text-neutral-400 text-white hover:font-semibold hover:text-2xl"
