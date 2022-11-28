@@ -10,21 +10,18 @@ const CheckoutForm = ({ booking }) => {
 
   const stripe = useStripe();
   const elements = useElements();
-  const { price, email, patient, _id } = booking;
+  const { price, email, name, _id } = booking;
 
   useEffect(() => {
     // Create PaymentIntent as soon as the page loads
-    fetch(
-      "https://doctors-portal-server-rust.vercel.app/create-payment-intent",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          authorization: `bearer ${localStorage.getItem("accessToken")}`,
-        },
-        body: JSON.stringify({ price }),
-      }
-    )
+    fetch(`${process.env.REACT_APP_URL}/create-payment-intent`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `bearer ${localStorage.getItem("accessToken")}`,
+      },
+      body: JSON.stringify({ price }),
+    })
       .then((res) => res.json())
       .then((data) => setClientSecret(data.clientSecret));
   }, [price]);
@@ -51,6 +48,7 @@ const CheckoutForm = ({ booking }) => {
       setCardError(error.message);
     } else {
       setCardError("");
+      console.log(paymentMethod);
     }
     setSuccess("");
     setProcessing(true);
@@ -59,7 +57,7 @@ const CheckoutForm = ({ booking }) => {
         payment_method: {
           card: card,
           billing_details: {
-            name: patient,
+            name: name,
             email: email,
           },
         },
@@ -78,7 +76,7 @@ const CheckoutForm = ({ booking }) => {
         email,
         bookingId: _id,
       };
-      fetch("https://doctors-portal-server-rust.vercel.app/payments", {
+      fetch(`${process.env.REACT_APP_URL}/payments`, {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -118,7 +116,7 @@ const CheckoutForm = ({ booking }) => {
           }}
         />
         <button
-          className="btn btn-sm mt-4 btn-primary"
+          className="btn btn-sm mt-8 btn-primary"
           type="submit"
           disabled={!stripe || !clientSecret || processing}
         >
@@ -130,7 +128,7 @@ const CheckoutForm = ({ booking }) => {
         <div>
           <p className="text-green-500">{success}</p>
           <p>
-            Your transactionId:{" "}
+            Your transactionId:
             <span className="font-bold">{transactionId}</span>
           </p>
         </div>
