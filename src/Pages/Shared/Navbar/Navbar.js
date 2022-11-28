@@ -23,7 +23,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="bg-[#ff9900] text-white py-2 md:py-4 z-300">
+    <div className="bg-[#ff9900] text-white py-2 md:py-4 z-30">
       <nav className="flex px-2 justify-between items-center ">
         <section className="text-2xl text-white ">
           <Link to="/" className="flex justify-evenly items-center">

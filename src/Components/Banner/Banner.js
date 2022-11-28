@@ -13,7 +13,7 @@ const Banner = () => {
         />
       </section>
       <section className="text px-12">
-        <h2 className="text-5xl font-semibold">
+        <h2 className=" text-3xl text-center md:text-left md:text-5xl font-semibold">
           Buy And Sell Used Products With Us. Best Deal Best Offers Only for
           you.
         </h2>
