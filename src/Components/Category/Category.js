@@ -14,7 +14,7 @@ const Category = () => {
     fetchProducts();
   }, []);
   return (
-    <div className="container mx-auto my-12">
+    <div className="container md:mx-auto  my-12">
       <h2 className="text-2xl md:text-4xl font-bold text-center md:text-left">
         Select Category
       </h2>

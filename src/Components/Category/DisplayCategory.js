@@ -6,9 +6,9 @@ const DisplayCategory = ({ product }) => {
   return (
     <>
       <Link to={`/category/${product.category_id}`}>
-        <div className="card card-compact w-96 bg-base-100 shadow-xl">
+        <div className="card card-compact w-56 bg-base-100 shadow-xl">
           <figure>
-            <img src={product.picture} className="h-64" alt="Shoes" />
+            <img src={product.picture} className="h-64" alt="" />
           </figure>
           <div className="card-body">
             <h2 className="card-title">{product.name}</h2>
